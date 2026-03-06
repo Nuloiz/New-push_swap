@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 15:45:51 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 15:50:00 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ char **check_both_rotate(t_node *stack_a, t_node *stack_b, int cost_a, int cost_
 char **write_rest_rotate(t_node *stack_a, t_node *stack_b, int rotate, char **operations)
 {
     int to_do;
-
+    //UNBEDINGT noch Schreiben, dass sowhl rotate b als auch rotate a noch gemacht wird 
+    //UND die Operations an der Richtigen Stelle einfuegen
     to_do = stack_a->value + stack_b->value;
     ft_printf("to do: %d\n", to_do);
     if (rotate > 0)
