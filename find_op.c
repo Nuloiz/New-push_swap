@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 15:07:35 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 15:10:58 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char **write_rest_rotate(t_node *stack_a, t_node *stack_b, int rotate, char **op
             operations[i] = ft_strdup("ra");
     } else
     {
-        i = i * -1;
+        rotate = rotate * -1;
         for (int i = 0; i < rotate; i++)
             operations[i] = ft_strdup("rra");
     }
