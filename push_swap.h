@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 12:56:04 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 13:02:35 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	pb(t_node **stack_a, t_node **stack_b);
 void	radix_sort(t_node *stack_a);
 void	turk_sort(t_node **stack_a);
 int		calculate_cost(t_node *stack_a, t_node *stack_b, t_node *target_node, t_node *pos_b);
+int		calculate_cost_stacks(t_node *stack, t_node *target);
 int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);

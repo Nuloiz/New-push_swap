@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 12:57:29 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 13:13:37 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,37 @@ t_node *find_target_node(t_node *stack_a, int value)
 
 char **find_operations(t_node *stack_a, t_node *stack_b, t_node *pos_b, t_node *target_node)
 {
-    char **operations = ft_calloc(100, sizeof(char *));
-    //calculate operations for stack_a and stack_b to get pos_b to target_node
+    char    **operations;
+    char    *operation;
+    int     cost_a;
+    int     cost_b;
+    
+    operations = ft_calloc(100, sizeof(char *));
+    cost_a = calculate_cost_stacks(stack_a, target_node);
+    
+    if (cost_a > count_nodes(stack_a) / 2)
+    {
+        cost_a = count_nodes(stack_a) - cost_a;
+        for (int i = 0; i < cost_a; i++)
+            operations[i] = "rra";
+    } else
+    {
+        for (int i = 0; i < cost_a; i++)
+            operations[i] = "ra";
+    }
+    cost_b = calculate_cost_stacks(stack_b, pos_b);
+    if (cost_b > count_nodes(stack_b) / 2)
+    {
+        cost_b = count_nodes(stack_b) - cost_b;
+        for (int i = 0; i < cost_b; i++)
+            operations[cost_a + i] = "rrb";
+    } else
+    {
+        for (int i = 0; i < cost_b; i++)
+            operations[cost_a + i] = "rb";
+    }    
+    //check for rr and rrr possibilities and adjust operations accordingly
+    operations[cost_a + cost_b] = "pa";
     return (operations);
 }
 
