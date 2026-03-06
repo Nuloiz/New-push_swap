@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 13:29:29 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:37:44 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ char **find_operations(t_node *stack_a, t_node *stack_b, t_node *pos_b, t_node *
     int     cost_a;
     int     cost_b;
     
-    operations = ft_calloc(100, sizeof(char *));
     cost_a = calculate_cost_stacks(stack_a, target_node);
-    
+    cost_b = calculate_cost_stacks(stack_b, pos_b);
+    operations = ft_calloc(cost_a + cost_b + 1, sizeof(char *));
     if (cost_a > count_nodes(stack_a) / 2)
     {
         cost_a = count_nodes(stack_a) - cost_a;
@@ -75,7 +75,6 @@ char **find_operations(t_node *stack_a, t_node *stack_b, t_node *pos_b, t_node *
         for (int i = 0; i < cost_a; i++)
             operations[i] = ft_strdup("ra");
     }
-    cost_b = calculate_cost_stacks(stack_b, pos_b);
     if (cost_b > count_nodes(stack_b) / 2)
     {
         cost_b = count_nodes(stack_b) - cost_b;
