@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/03 11:35:42 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 12:56:04 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_node
 	struct s_node	*next;
 }				t_node;
 
+typedef struct s_cost
+{
+	int total_cost;
+	struct s_cost *pos;
+}				t_cost;
+
 int		main(int argc, char	**argv);
 int		input_checker(int argc, char **argv);
 int		no_int_twice(char **list);
@@ -35,6 +41,8 @@ void	rotate_stack(t_node **stack_a, t_node **stack_b, char *operation);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
 void	radix_sort(t_node *stack_a);
+void	turk_sort(t_node **stack_a);
+int		calculate_cost(t_node *stack_a, t_node *stack_b, t_node *target_node, t_node *pos_b);
 int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);
