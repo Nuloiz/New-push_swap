@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 14:44:56 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:56:50 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,8 @@ void execute_operations(t_node *stack_a, t_node *stack_b, char **operations)
             rotate_stack(NULL, &stack_b, "rrb");
         else if (ft_strcmp(operations[i], "rrr") == 0)
             rotate_stack(&stack_a, &stack_b, "rrr");
-        else if (ft_strcmp(operations[i], "pa") == 0)
-            pa(&stack_a, &stack_b);
         i++;
     }
+    pa(&stack_a, &stack_b);
     free_array(operations);
 }
