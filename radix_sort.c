@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:43:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 15:15:25 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 15:39:47 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	max_int(t_node *stack_a)
 	return (max_shift);
 }
 
-static int	count_nodes(t_node *stack_a)
+/*static int	count_nodes(t_node *stack_a)
 {
 	t_node	*pos;
 	int		count;
@@ -45,7 +45,7 @@ static int	count_nodes(t_node *stack_a)
 		pos = pos->next;
 	}
 	return (count);
-}
+}*/
 
 static void	push_rotate(t_node **stack_a, t_node **stack_b, int pos, int nodes)
 {

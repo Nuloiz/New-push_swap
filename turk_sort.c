@@ -6,13 +6,13 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 15:35:43 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 15:38:20 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	count_nodes(t_node *stack_a)
+int	count_nodes(t_node *stack_a)
 {
 	t_node	*pos;
 	int		count;
