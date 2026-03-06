@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 14:37:44 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:38:48 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,5 @@ void execute_operations(t_node *stack_a, t_node *stack_b, char **operations)
             pa(&stack_a, &stack_b);
         i++;
     }
+    free_array(operations);
 }
