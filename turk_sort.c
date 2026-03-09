@@ -96,11 +96,11 @@ void	turk_sort(t_node *stack_a)
 
 	b = NULL;
 	set_up_sort(&stack_a, &b);
-	pos_b = b;
 	while (b != NULL)
 	{
 		cost.total_cost = 2147483647;
 		cost.pos = NULL;
+		pos_b = b;
 		while (pos_b != NULL)
 		{
 			ta_node = find_target_node(stack_a, b->value);
