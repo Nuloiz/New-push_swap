@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:50:39 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 16:07:40 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,12 @@ void	turk_sort(t_node *stack_a)
 	t_node	*pos_b;
 
 	b = NULL;
-	cost.total_cost = 2147483647;
-	cost.pos = 0;
 	set_up_sort(&stack_a, &b);
 	pos_b = b;
 	while (b != NULL)
 	{
+		cost.total_cost = 2147483647;
+		cost.pos = NULL;
 		while (pos_b != NULL)
 		{
 			ta_node = find_target_node(stack_a, b->value);
