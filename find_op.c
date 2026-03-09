@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:07:24 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:08:04 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 char	**rot_wo_rr(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
 	char	**operations;
+	int		i;
 
+	i = 0;
 	operations = ft_calloc(cost_a + cost_b + 1, sizeof(char *));
 	while (cost_a-- > 0)
 	{
@@ -85,12 +87,10 @@ char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 	char	**operations;
 	int		cost_a;
 	int		cost_b;
-	int		i;
 
 	cost_a = calculate_cost_stacks(a, ta_node);
 	cost_b = calculate_cost_stacks(b, pos_b);
 	operations = check_b_rot(a, b, cost_a, cost_b);
-	i = 0;
 	if (operations != NULL)
 	{
 		if (rr_posibility(a, b, cost_a, cost_b) == 1)
