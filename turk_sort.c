@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 17:12:02 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 17:14:39 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,40 +40,6 @@ void	set_up_sort(t_node **stack_a, t_node **stack_b)
 		i++;
 	}
 	*stack_a = three_arg(*stack_a);
-}
-
-t_node	*find_target_node(t_node *stack_a, int value)
-{
-	t_node	*tmp;
-	t_node	*pos;
-	int		target_value;
-
-	pos = stack_a;
-	tmp = NULL;
-	target_value = 2147483647;
-	while (pos != NULL)
-	{
-		if (pos->value > value && pos->value < target_value)
-		{
-			target_value = pos->value;
-			tmp = pos;
-		}
-		pos = pos->next;
-	}
-	if (tmp == NULL)
-	{
-		pos = stack_a;
-		while (pos != NULL)
-		{
-			if (pos->value < target_value)
-			{
-				target_value = pos->value;
-				tmp = pos;
-			}
-			pos = pos->next;
-		}
-	}
-	return (tmp);
 }
 
 void	exec_operations(t_node **stack_a, t_node **stack_b, char **operations)
