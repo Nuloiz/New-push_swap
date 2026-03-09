@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:27:12 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:49:53 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
 int		count_nodes(t_node *stack_a);
 void	radix_sort(t_node *stack_a);
-void	turk_sort(t_node **stack_a);
+void	turk_sort(t_node *stack_a);
 int		cost(t_node *stack_a, t_node *stack_b, t_node *t_node, t_node *pos_b);
 int		calculate_cost_stacks(t_node *stack, t_node *target);
 int		rr_posibility(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b);
