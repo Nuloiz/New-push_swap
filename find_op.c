@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:42:11 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:01:55 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ char	**add_ra_rb_rrra_rrrb(char **operations, int cost_a, int cost_b, int r)
 	return (operations);
 }
 
-char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *t_node)
+char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 {
 	char	**operations;
 	int		cost_a;
 	int		cost_b;
 	int		i;
 
-	cost_a = calculate_cost_stacks(a, t_node);
+	cost_a = calculate_cost_stacks(a, ta_node);
 	cost_b = calculate_cost_stacks(b, pos_b);
 	operations = check_b_rot(a, b, cost_a, cost_b);
 	i = 0;

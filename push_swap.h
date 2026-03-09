@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:54:54 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:01:17 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	pb(t_node **stack_a, t_node **stack_b);
 int		count_nodes(t_node *stack_a);
 void	radix_sort(t_node *stack_a);
 void	turk_sort(t_node *stack_a);
-int		cost_c(t_node *stack_a, t_node *stack_b, t_node *t_node, t_node *pos_b);
+int		cost(t_node *stack_a, t_node *stack_b, t_node *ta_node, t_node *pos_b);
 int		calculate_cost_stacks(t_node *stack, t_node *target);
 int		rr_posibility(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b);
 int		rr_cost(int cost_a, int cost_b, int dir);
-char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *t_node);
+char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node);
 int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);

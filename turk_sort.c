@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:57:31 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:00:45 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_node	*find_target_node(t_node *stack_a, int value)
 	return (pos);
 }
 
-void	execute_operations(t_node **stack_a, t_node *stack_b, char **operations)
+void	exec_operations(t_node **stack_a, t_node *stack_b, char **operations)
 {
 	int	i;
 
@@ -87,7 +87,7 @@ void	turk_sort(t_node *stack_a)
 {
 	t_node	*b;
 	t_cost	cost;
-	t_node	*t_node;
+	t_node	*ta_node;
 	t_node	*pos_b;
 
 	b = NULL;
@@ -99,14 +99,14 @@ void	turk_sort(t_node *stack_a)
 	{
 		while (pos_b != NULL)
 		{
-			t_node = find_target_node(stack_a, b->value);
-			if (cost.total_cost > cost_c(stack_a, b, t_node, pos_b))
+			ta_node = find_target_node(stack_a, b->value);
+			if (cost.total_cost > cost(stack_a, b, ta_node, pos_b))
 			{
-				cost.total_cost = cost_c(stack_a, b, t_node, pos_b);
+				cost.total_cost = cost(stack_a, b, ta_node, pos_b);
 				cost.pos = pos_b;
 			}
 			pos_b = pos_b->next;
 		}
-		execute_operations(&stack_a, &b, find_op(stack_a, b, cost.pos, t_node));
+		exec_operations(&stack_a, &b, find_op(stack_a, b, cost.pos, ta_node));
 	}
 }
