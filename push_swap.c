@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:34:38 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:40:07 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:42:04 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,14 @@ int	no_int_twice(char **list)
 
 static void	sorting(int num_of_arg, t_node *stack)
 {
+	t_node	*temp;
+
 	if (already_sorted(stack))
 		return ;
 	if (num_of_arg <= 3)
 	{
-		free_stack(&three_arg(stack));
+		temp = three_arg(stack);
+		free_stack(&temp);
 	}
 	else if (num_of_arg <= 5)
 		five_arg(num_of_arg, stack);
