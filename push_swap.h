@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/06 15:38:32 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 11:30:41 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_node
 
 typedef struct s_cost
 {
-	int 			total_cost;
+	int				total_cost;
 	struct s_node	*pos;
 }				t_cost;
 
@@ -43,9 +43,9 @@ void	pb(t_node **stack_a, t_node **stack_b);
 int		count_nodes(t_node *stack_a);
 void	radix_sort(t_node *stack_a);
 void	turk_sort(t_node **stack_a);
-int		calculate_cost(t_node *stack_a, t_node *stack_b, t_node *target_node, t_node *pos_b);
+int		cost(t_node *stack_a, t_node *stack_b, t_node *t_node, t_node *pos_b);
 int		calculate_cost_stacks(t_node *stack, t_node *target);
-char	**find_operations(t_node *stack_a, t_node *stack_b, t_node *pos_b, t_node *target_node);
+char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *t_node);
 int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);
