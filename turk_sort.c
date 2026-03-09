@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 16:07:40 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 17:12:02 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_node	*find_target_node(t_node *stack_a, int value)
 	int		target_value;
 
 	pos = stack_a;
+	tmp = NULL;
 	target_value = 2147483647;
 	while (pos != NULL)
 	{
@@ -58,6 +59,19 @@ t_node	*find_target_node(t_node *stack_a, int value)
 			tmp = pos;
 		}
 		pos = pos->next;
+	}
+	if (tmp == NULL)
+	{
+		pos = stack_a;
+		while (pos != NULL)
+		{
+			if (pos->value < target_value)
+			{
+				target_value = pos->value;
+				tmp = pos;
+			}
+			pos = pos->next;
+		}
 	}
 	return (tmp);
 }
