@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:34:38 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/05 11:34:12 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:44:56 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	sorting(int num_of_arg, t_node *stack)
 	else if (num_of_arg <= 5)
 		five_arg(num_of_arg, stack);
 	else
-		radix_sort(stack);
+		turk_sort(stack);
 }
 
 static void	new_list(char **list, int index)

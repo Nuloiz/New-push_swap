@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:04:30 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:47:05 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_node	*find_target_node(t_node *stack_a, int value)
 	return (pos);
 }
 
-void	execute_operations(t_node *stack_a, t_node *stack_b, char **operations)
+void	execute_operations(t_node **stack_a, t_node *stack_b, char **operations)
 {
 	int	i;
 
@@ -66,24 +66,24 @@ void	execute_operations(t_node *stack_a, t_node *stack_b, char **operations)
 	while (operations[i] != NULL)
 	{
 		if (ft_strncmp(operations[i], "ra", 2) == 0)
-			rotate_stack(&stack_a, NULL, "ra");
+			rotate_stack(stack_a, NULL, "ra");
 		else if (ft_strncmp(operations[i], "rb", 2) == 0)
-			rotate_stack(NULL, &stack_b, "rb");
+			rotate_stack(NULL, stack_b, "rb");
 		else if (ft_strncmp(operations[i], "rr", 2) == 0)
-			rotate_stack(&stack_a, &stack_b, "rr");
+			rotate_stack(stack_a, stack_b, "rr");
 		else if (ft_strncmp(operations[i], "rra", 3) == 0)
-			rotate_stack(&stack_a, NULL, "rra");
+			rotate_stack(stack_a, NULL, "rra");
 		else if (ft_strncmp(operations[i], "rrb", 3) == 0)
-			rotate_stack(NULL, &stack_b, "rrb");
+			rotate_stack(NULL, stack_b, "rrb");
 		else if (ft_strncmp(operations[i], "rrr", 3) == 0)
-			rotate_stack(&stack_a, &stack_b, "rrr");
+			rotate_stack(stack_a, stack_b, "rrr");
 		i++;
 	}
-	pa(&stack_a, &stack_b);
+	pa(stack_a, stack_b);
 	free_array(operations);
 }
 
-void	turk_sort(t_node **stack_a)
+void	turk_sort(t_node *stack_a)
 {
 	t_node	*b;
 	t_cost	cost;
@@ -93,19 +93,19 @@ void	turk_sort(t_node **stack_a)
 	stack_b = NULL;
 	cost.total_cost = 2147483647;
 	cost.pos = 0;
-	set_up_sort(stack_a, &b);
+	set_up_sort(&stack_a, &b);
 	while (b != NULL)
 	{
 		while (pos_b != NULL)
 		{
-			t_node = find_target_node(*stack_a, b->value);
-			if (cost.total_cost > cost(*stack_a, b, t_node, pos_b))
+			t_node = find_target_node(stack_a, b->value);
+			if (cost.total_cost > cost(stack_a, b, t_node, pos_b))
 			{
-				cost.total_cost = cost(*stack_a, b, t_node, pos_b);
+				cost.total_cost = cost(stack_a, b, t_node, pos_b);
 				cost.pos = pos_b;
 			}
 			pos_b = pos_b->next;
 		}
-		execute_operations(*stack_a, b, find_op(*stack_a, b, cost.pos, t_node));
+		execute_operations(&stack_a, &b, find_op(stack_a, b, cost.pos, t_node));
 	}
 }
