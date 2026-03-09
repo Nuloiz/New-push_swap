@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:08:04 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:59:13 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 
 	cost_a = calculate_cost_stacks(a, ta_node);
 	cost_b = calculate_cost_stacks(b, pos_b);
+	operations = NULL;
 	operations = check_b_rot(a, b, cost_a, cost_b);
 	if (operations != NULL)
 	{
