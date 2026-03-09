@@ -6,88 +6,80 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:02:01 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:42:11 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**check_both_rotate(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
+char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
 	char	**operations;
 	int		up_down_a;
 	int		up_down_b;
 	int		dif;
 
-	up_down_a = (cost_a > count_nodes(stack_a) / 2) ? 1 : 0;
-	up_down_b = (cost_b > count_nodes(stack_b) / 2) ? 1 : 0;
-	dif = (cost_a > cost_b) ? cost_a - cost_b : cost_b - cost_a;
-	if (up_down_a == up_down_b)
+	if (rr_posibility == 1)
 	{
-		operations = ft_calloc((cost_a + cost_b + 1), sizeof(char *));
-		if (up_down_a == 0)
-		{
-			for (int i = 0; i < dif; i++)
-				operations[i] = ft_strdup("rr");
-		}
-		else
-		{
-			for (int i = 0; i < dif; i++)
-				operations[i] = ft_strdup("rrr");
-		}
-		return (operations);
+		dif = rr_cost(cost_a, cost_b, 1);
+		operations = ft_calloc(dif + 1, sizeof(char *));
+		while (dif-- > 0)
+			operations[dif - 1] = ft_strdup("rr");
 	}
-	else
-		return (NULL);
+	else if (rr_posibility == 2)
+	{
+		dif = rr_cost(cost_a, cost_b, 2);
+		operations = ft_calloc(dif + 1, sizeof(char *));
+		while (dif-- > 0)
+			operations[dif - 1] = ft_strdup("rrr");
+	}
+	return (NULL);
 }
 
-char	**rest_rot(t_node *stack_a, t_node *stack_b, int rot, char **op)
-{
-	int	to_do;
-	//UNBEDINGT noch Schreiben, dass sowhl rotate b als auch rotate a noch gemacht wird 
-	//UND die Operations an der Richtigen Stelle einfuegen
-	to_do = stack_a->value + stack_b->value;
-	ft_printf("to do: %d\n", to_do);
-	if (rot > 0)
-	{
-		for (int i = 0; i < rot; i++)
-			op[i] = ft_strdup("ra");
-	}
-	else
-	{
-		rot = rot * -1;
-		for (int i = 0; i < rot; i++)
-			op[i] = ft_strdup("rra");
-	}
-	return (op);
-}
-
-char	**op_wo_rr(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
+char	**rot_wo_rr(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
 	char	**operations;
+	int		i;
 
+	i = 0;
 	operations = ft_calloc(cost_a + cost_b + 1, sizeof(char *));
-	if (cost_a > count_nodes(stack_a) / 2)
+	while (cost_a-- > 0)
 	{
-		cost_a = count_nodes(stack_a) - cost_a;
-		for (int i = 0; i < cost_a; i++)
-			operations[i] = ft_strdup("rra");
+		if (cost_a > count_nodes(stack_a) / 2)
+			operations[i++] = ft_strdup("rra");
+		else
+			operations[i++] = ft_strdup("ra");
+	}
+	while (cost_b-- > 0)
+	{
+		if (cost_b > count_nodes(stack_b) / 2)
+			operations[i++] = ft_strdup("rrb");
+		else
+			operations[i++] = ft_strdup("rb");
+	}
+	return (operations);
+}
+
+char	**add_ra_rb_rrra_rrrb(char **operations, int cost_a, int cost_b, int r)
+{
+	int		i;
+
+	i = 0;
+	while (operations[i] != NULL)
+		i++;
+	if (r == 1)
+	{
+		while (cost_a-- > 0)
+			operations[i++] = ft_strdup("ra");
+		while (cost_b-- > 0)
+			operations[i++] = ft_strdup("rb");
 	}
 	else
 	{
-		for (int i = 0; i < cost_a; i++)
-			operations[i] = ft_strdup("ra");
-	}
-	if (cost_b > count_nodes(stack_b) / 2)
-	{
-		cost_b = count_nodes(stack_b) - cost_b;
-		for (int i = 0; i < cost_b; i++)
-			operations[cost_a + i] = ft_strdup("rrb");
-	}
-	else
-	{
-		for (int i = 0; i < cost_b; i++)
-			operations[cost_a + i] = ft_strdup("rb");
+		while (cost_a-- > 0)
+			operations[i++] = ft_strdup("rra");
+		while (cost_b-- > 0)
+			operations[i++] = ft_strdup("rrb");
 	}
 	return (operations);
 }
@@ -101,20 +93,16 @@ char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *t_node)
 
 	cost_a = calculate_cost_stacks(a, t_node);
 	cost_b = calculate_cost_stacks(b, pos_b);
-	operations = check_both_rotate(a, b, cost_a, cost_b);
+	operations = check_b_rot(a, b, cost_a, cost_b);
+	i = 0;
 	if (operations != NULL)
 	{
-		if (cost_a > cost_b)
-			i = cost_a - cost_b;
-		else
-			i = cost_b - cost_a;
-		if (i == 0)
-			return (operations);
-		if (cost_a > count_nodes(a) / 2)
-			i = i * -1;
-		operations = rest_rot(a, b, i, operations);
+		if (rr_posibility(a, b, cost_a, cost_b) == 1)
+			operations = add_ra_rb_rrra_rrrb(operations, cost_a, cost_b, 1);
+		else if (rr_posibility(a, b, cost_a, cost_b) == 2)
+			operations = add_ra_rb_rrra_rrrb(operations, cost_a, cost_b, 0);
 	}
 	else
-		operations = op_wo_rr(a, b, cost_a, cost_b);
+		operations = rot_wo_rr(a, b, cost_a, cost_b);
 	return (operations);
 }
