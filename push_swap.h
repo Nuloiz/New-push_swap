@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:04:48 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:37:57 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		rr_posibility(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b);
 int		rr_cost(int cost_a, int cost_b, int dir);
 char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node);
 int		already_sorted(t_node *stack);
-void	three_arg(t_node *stack_a);
+t_node	*three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);
 int		*new_numbers(int argc, char **list, int index);
 void	free_stack(t_node **stack);
