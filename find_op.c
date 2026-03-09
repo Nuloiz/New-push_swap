@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:59:13 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 16:02:05 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 		operations = ft_calloc(dif + 1, sizeof(char *));
 		while (dif-- > 0)
 			operations[dif - 1] = ft_strdup("rr");
+		return (operations);
 	}
 	else if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 2)
 	{
@@ -30,6 +31,7 @@ char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 		operations = ft_calloc(dif + 1, sizeof(char *));
 		while (dif-- > 0)
 			operations[dif - 1] = ft_strdup("rrr");
+		return (operations);
 	}
 	return (NULL);
 }
@@ -90,7 +92,6 @@ char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 
 	cost_a = calculate_cost_stacks(a, ta_node);
 	cost_b = calculate_cost_stacks(b, pos_b);
-	operations = NULL;
 	operations = check_b_rot(a, b, cost_a, cost_b);
 	if (operations != NULL)
 	{
