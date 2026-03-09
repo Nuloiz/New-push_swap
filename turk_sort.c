@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 13:43:22 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:04:30 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	turk_sort(t_node **stack_a)
 	{
 		while (pos_b != NULL)
 		{
-			target_node = find_target_node(*stack_a, b->value);
+			t_node = find_target_node(*stack_a, b->value);
 			if (cost.total_cost > cost(*stack_a, b, t_node, pos_b))
 			{
 				cost.total_cost = cost(*stack_a, b, t_node, pos_b);
