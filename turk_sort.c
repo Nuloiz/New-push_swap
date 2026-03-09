@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:00:45 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:05:05 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_node	*find_target_node(t_node *stack_a, int value)
 	return (pos);
 }
 
-void	exec_operations(t_node **stack_a, t_node *stack_b, char **operations)
+void	exec_operations(t_node **stack_a, t_node **stack_b, char **operations)
 {
 	int	i;
 
@@ -100,9 +100,9 @@ void	turk_sort(t_node *stack_a)
 		while (pos_b != NULL)
 		{
 			ta_node = find_target_node(stack_a, b->value);
-			if (cost.total_cost > cost(stack_a, b, ta_node, pos_b))
+			if (cost.total_cost > costs(stack_a, b, ta_node, pos_b))
 			{
-				cost.total_cost = cost(stack_a, b, ta_node, pos_b);
+				cost.total_cost = costs(stack_a, b, ta_node, pos_b);
 				cost.pos = pos_b;
 			}
 			pos_b = pos_b->next;
