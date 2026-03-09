@@ -6,13 +6,13 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:41:01 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 14:21:02 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:53:01 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	cost(t_node *stack_a, t_node *stack_b, t_node *t_node, t_node *pos_b)
+int	calc_cost(t_node *stack_a, t_node *stack_b, t_node *t_node, t_node *pos_b)
 {
 	int	cost_a;
 	int	cost_b;
