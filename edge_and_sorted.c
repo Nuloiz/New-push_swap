@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:38:09 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/05 11:34:48 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:35:02 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	sorted(t_node *stack)
 	return (1);
 }
 
-void	three_arg(t_node *stack_a)
+t_node	*three_arg(t_node *stack_a)
 {
 	if (stack_a->next->next == NULL)
 		stack_a = sa(stack_a);
@@ -64,7 +64,7 @@ void	three_arg(t_node *stack_a)
 			stack_a->value > stack_a->next->next->value)
 			rotate_stack(&stack_a, NULL, "ra");
 	}
-	free_stack(&stack_a);
+	return (stack_a);
 }
 
 t_node	*three_arg_for_five(t_node *stack_a)

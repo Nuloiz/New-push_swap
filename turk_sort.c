@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:05:05 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/09 15:36:20 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_up_sort(t_node **stack_a, t_node **stack_b)
 		pb(stack_a, stack_b);
 		i++;
 	}
-	three_arg(*stack_a);
+	*stack_a = three_arg(*stack_a);
 }
 
 t_node	*find_target_node(t_node *stack_a, int value)
