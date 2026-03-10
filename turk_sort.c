@@ -107,7 +107,7 @@ void	turk_sort(t_node *stack_a)
 		pos_b = b;
 		while (pos_b != NULL)
 		{
-			ta_node = find_target_node(stack_a, b->value);
+			ta_node = find_target_node(stack_a, pos_b->value);
 			if (cost.total_cost > costs(stack_a, b, ta_node, pos_b))
 			{
 				cost.total_cost = costs(stack_a, b, ta_node, pos_b);
@@ -115,6 +115,7 @@ void	turk_sort(t_node *stack_a)
 			}
 			pos_b = pos_b->next;
 		}
+		ta_node = find_target_node(stack_a, cost.pos->value);
 		exec_operations(&stack_a, &b, find_op(stack_a, b, cost.pos, ta_node));
 	}
 	rot_top(&stack_a);
