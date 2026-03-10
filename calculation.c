@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:41:01 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 15:04:55 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 17:32:58 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	calculate_cost_stacks(t_node *stack, t_node *target)
 		cost++;
 		tmp = tmp->next;
 	}
-	if (cost > count_nodes(stack) / 2)
-		cost = count_nodes(stack) - cost;
 	return (cost);
 }
 
@@ -60,8 +58,7 @@ int	rr_posibility(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 	{
 		if (up_down_a == 0)
 			return (1);
-		else
-			return (2);
+		return (2);
 	}
 	return (0);
 }
