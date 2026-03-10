@@ -18,11 +18,7 @@ int	costs(t_node *stack_a, t_node *stack_b, t_node *ta_node, t_node *pos_b)
 	int	cost_b;
 
 	cost_a = calculate_cost_stacks(stack_a, ta_node);
-	if (cost_a > count_nodes(stack_a) / 2)
-		cost_a = count_nodes(stack_a) - cost_a;
 	cost_b = calculate_cost_stacks(stack_b, pos_b);
-	if (cost_b > count_nodes(stack_b) / 2)
-		cost_b = count_nodes(stack_b) - cost_b;
 	if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 1)
 		return (cost_a + cost_b - rr_cost(cost_a, cost_b, 1));
 	else if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 2)
@@ -40,6 +36,8 @@ int	calculate_cost_stacks(t_node *stack, t_node *target)
 		cost++;
 		stack = stack->next;
 	}
+	if (cost > count_nodes(stack) / 2)
+		cost = count_nodes(stack) - cost;
 	return (cost);
 }
 
