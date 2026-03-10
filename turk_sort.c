@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/10 14:07:34 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 14:08:44 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void	rot_top(t_node **stack_a)
 	if (count > count_nodes(*stack_a) / 2)
 	{
 		while ((*stack_a)->value != 0)
-			rra(stack_a, NULL);
+			rotate_stack(stack_a, NULL, "rra");
 	}
 	else
 	{
 		while ((*stack_a)->value != 0)
-			ra(stack_a, NULL);
+			rotate_stack(stack_a, NULL, "ra");
 	}
 }
 
