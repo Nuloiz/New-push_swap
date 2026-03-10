@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 17:14:39 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 14:07:34 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,30 @@ void	exec_operations(t_node **stack_a, t_node **stack_b, char **operations)
 	free_array(operations);
 }
 
+void	rot_top(t_node **stack_a)
+{
+	t_node	*pos;
+	int		count;
+
+	pos = *stack_a;
+	count = 0;
+	while (pos->next != NULL && pos->value != 0)
+	{
+		count++;
+		pos = pos->next;
+	}
+	if (count > count_nodes(*stack_a) / 2)
+	{
+		while ((*stack_a)->value != 0)
+			rra(stack_a, NULL);
+	}
+	else
+	{
+		while ((*stack_a)->value != 0)
+			ra(stack_a, NULL);
+	}
+}
+
 void	turk_sort(t_node *stack_a)
 {
 	t_node	*b;
@@ -93,4 +117,5 @@ void	turk_sort(t_node *stack_a)
 		}
 		exec_operations(&stack_a, &b, find_op(stack_a, b, cost.pos, ta_node));
 	}
+	rot_top(&stack_a);
 }
