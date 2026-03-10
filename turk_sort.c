@@ -49,18 +49,18 @@ void	exec_operations(t_node **stack_a, t_node **stack_b, char **operations)
 	i = 0;
 	while (operations[i] != NULL)
 	{
-		if (ft_strncmp(operations[i], "ra", 2) == 0)
-			rotate_stack(stack_a, NULL, "ra");
-		else if (ft_strncmp(operations[i], "rb", 2) == 0)
-			rotate_stack(NULL, stack_b, "rb");
-		else if (ft_strncmp(operations[i], "rr", 2) == 0)
-			rotate_stack(stack_a, stack_b, "rr");
-		else if (ft_strncmp(operations[i], "rra", 3) == 0)
+		if (ft_strncmp(operations[i], "rra", 3) == 0)
 			rotate_stack(stack_a, NULL, "rra");
 		else if (ft_strncmp(operations[i], "rrb", 3) == 0)
 			rotate_stack(NULL, stack_b, "rrb");
 		else if (ft_strncmp(operations[i], "rrr", 3) == 0)
 			rotate_stack(stack_a, stack_b, "rrr");
+		else if (ft_strncmp(operations[i], "ra", 2) == 0)
+			rotate_stack(stack_a, NULL, "ra");
+		else if (ft_strncmp(operations[i], "rb", 2) == 0)
+			rotate_stack(NULL, stack_b, "rb");
+		else if (ft_strncmp(operations[i], "rr", 2) == 0)
+			rotate_stack(stack_a, stack_b, "rr");
 		i++;
 	}
 	pa(stack_a, stack_b);
