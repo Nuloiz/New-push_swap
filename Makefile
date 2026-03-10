@@ -12,7 +12,7 @@ CFLAGS	=	-Wall -Werror -Wextra -g
 
 INPUT1:=$(shell seq 0 2 | sort -R)
 INPUT2:=$(shell seq -4 0 | sort -R)
-INPUT3:=$(shell seq -5 4 | sort -R)
+INPUT3:=$(shell seq 0 9 | sort -R)
 INPUT4:=$(shell seq -50 49 | sort -R)
 INPUT5:=$(shell seq -250 249 | sort -R)
 INPUT6:=$(shell seq -500 499 | sort -R)

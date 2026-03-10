@@ -45,6 +45,8 @@ static int	sorted(t_node *stack)
 
 t_node	*three_arg(t_node *stack_a)
 {
+	if (sorted(stack_a))
+		return (stack_a);
 	if (stack_a->next->next == NULL)
 		stack_a = sa(stack_a);
 	else if (stack_a->value < stack_a->next->value && \
