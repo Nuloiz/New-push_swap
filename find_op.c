@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/10 13:39:22 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 13:46:45 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 	char	**operations;
 	int		dif;
 
+	if (cost_a == 0 || cost_b == 0)
+		return (NULL);
 	if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 1)
 	{
 		dif = rr_cost(cost_a, cost_b, 1);
