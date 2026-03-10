@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/10 14:08:44 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 16:23:24 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,21 @@ void	set_up_sort(t_node **stack_a, t_node **stack_b)
 	*stack_a = three_arg(*stack_a);
 }
 
-void	exec_operations(t_node **stack_a, t_node **stack_b, char **operations)
+void	exec_operations(t_node **stack_a, t_node **stack_b, t_op operations)
 {
-	int	i;
-
-	i = 0;
-	while (operations && operations[i] != NULL)
-	{
-		if (ft_strncmp(operations[i], "rra", 3) == 0)
-			rotate_stack(stack_a, NULL, "rra");
-		else if (ft_strncmp(operations[i], "rrb", 3) == 0)
-			rotate_stack(NULL, stack_b, "rrb");
-		else if (ft_strncmp(operations[i], "rrr", 3) == 0)
-			rotate_stack(stack_a, stack_b, "rrr");
-		else if (ft_strncmp(operations[i], "ra", 2) == 0)
-			rotate_stack(stack_a, NULL, "ra");
-		else if (ft_strncmp(operations[i], "rb", 2) == 0)
-			rotate_stack(NULL, stack_b, "rb");
-		else if (ft_strncmp(operations[i], "rr", 2) == 0)
-			rotate_stack(stack_a, stack_b, "rr");
-		i++;
-	}
+	while (operations.rr-- > 0)
+		rotate_stack(stack_a, stack_b, "rr");
+	while (operations.rrr-- > 0)
+		rotate_stack(stack_a, stack_b, "rr");
+	while (operations.ra-- > 0)
+		rotate_stack(stack_a, NULL, "ra");
+	while (operations.rb-- > 0)
+		rotate_stack(NULL, stack_b, "rb");
+	while (operations.rra-- > 0)
+		rotate_stack(stack_a, NULL, "rra");
+	while (operations.rrb-- > 0)
+		rotate_stack(NULL, stack_b, "rrb");
 	pa(stack_a, stack_b);
-	free_array(operations);
 }
 
 void	rot_top(t_node **stack_a)

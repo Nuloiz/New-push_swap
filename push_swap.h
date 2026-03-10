@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/09 17:15:05 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 16:23:07 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ typedef struct s_cost
 	struct s_node	*pos;
 }				t_cost;
 
+typedef struct s_op
+{
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}				t_op;
+
 int		main(int argc, char	**argv);
 int		input_checker(int argc, char **argv);
 int		no_int_twice(char **list);
@@ -48,7 +58,7 @@ int		costs(t_node *stack_a, t_node *stack_b, t_node *ta_node, t_node *pos_b);
 int		calculate_cost_stacks(t_node *stack, t_node *target);
 int		rr_posibility(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b);
 int		rr_cost(int cost_a, int cost_b, int dir);
-char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node);
+t_op	find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node);
 int		already_sorted(t_node *stack);
 t_node	*three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);

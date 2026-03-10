@@ -6,99 +6,99 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/10 15:18:54 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 16:24:27 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
+t_op	set_up_op(t_op operations)
 {
-	char	**operations;
+	operations.ra = 0;
+	operations.rb = 0;
+	operations.rr = 0;
+	operations.rra = 0;
+	operations.rrb = 0;
+	operations.rrr = 0;
+	return (operations);
+}
+
+t_op	check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
+{
+	t_op	operations;
 	int		dif;
 
+	operations = set_up_op(operations);
 	if (cost_a == 0 || cost_b == 0)
-		return (NULL);
+		return (operations);
 	if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 1)
 	{
 		dif = rr_cost(cost_a, cost_b, 1);
-		operations = ft_calloc(dif + 1, sizeof(char *));
 		while (dif-- > 0)
-			operations[dif] = ft_strdup("rr");
+			operations.rr++;
 	}
 	else if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 2)
 	{
 		dif = rr_cost(cost_a, cost_b, 2);
-		operations = ft_calloc(dif + 1, sizeof(char *));
 		while (dif-- > 0)
-			operations[dif] = ft_strdup("rrr");
+			operations.rrr++;
 	}
-	else
-		return (NULL);
 	return (operations);
 }
 
-char	**rot_wo_rr(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
+t_op	rot_wo_rr(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
-	char	**operations;
-	int		i;
+	t_op	operations;
 	int		tmp;
 
-	i = 0;
-	operations = ft_calloc(cost_a + cost_b + 1, sizeof(char *));
 	tmp = cost_a;
 	while (cost_a-- > 0)
 	{
 		if (tmp > count_nodes(stack_a) / 2)
-			operations[i++] = ft_strdup("rra");
+			operations.rra++;
 		else
-			operations[i++] = ft_strdup("ra");
+			operations.ra++;
 	}
 	tmp = cost_b;
 	while (cost_b-- > 0)
 	{
 		if (tmp > count_nodes(stack_b) / 2)
-			operations[i++] = ft_strdup("rrb");
+			operations.rrb++;
 		else
-			operations[i++] = ft_strdup("rb");
+			operations.rb++;
 	}
 	return (operations);
 }
 
-char	**add_ra_rb_rrra_rrrb(char **operations, int cost_a, int cost_b, int r)
+t_op	add_ra_rb_rrra_rrrb(t_op operations, int cost_a, int cost_b, int r)
 {
-	int		i;
-
-	i = 0;
-	while (operations[i] != NULL)
-		i++;
 	if (r == 1)
 	{
 		while (cost_a-- > 0)
-			operations[i++] = ft_strdup("ra");
+			operations.ra++;
 		while (cost_b-- > 0)
-			operations[i++] = ft_strdup("rb");
+			operations.rb++;
 	}
 	else
 	{
 		while (cost_a-- > 0)
-			operations[i++] = ft_strdup("rra");
+			operations.rra++;
 		while (cost_b-- > 0)
-			operations[i++] = ft_strdup("rrb");
+			operations.rrb++;
 	}
 	return (operations);
 }
 
-char	**find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
+t_op	find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 {
-	char	**operations;
+	t_op	operations;
 	int		cost_a;
 	int		cost_b;
 
 	cost_a = calculate_cost_stacks(a, ta_node);
 	cost_b = calculate_cost_stacks(b, pos_b);
 	operations = check_b_rot(a, b, cost_a, cost_b);
-	if (operations != NULL)
+	if (operations.rr > 0 || operations.rrr > 0)
 	{
 		if (rr_posibility(a, b, cost_a, cost_b) == 1)
 			operations = add_ra_rb_rrra_rrrb(operations, cost_a, cost_b, 1);
