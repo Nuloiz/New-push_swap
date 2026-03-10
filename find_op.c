@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/10 13:46:45 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/10 15:18:54 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ char	**check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 		dif = rr_cost(cost_a, cost_b, 1);
 		operations = ft_calloc(dif + 1, sizeof(char *));
 		while (dif-- > 0)
-			operations[dif - 1] = ft_strdup("rr");
+			operations[dif] = ft_strdup("rr");
 	}
 	else if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 2)
 	{
 		dif = rr_cost(cost_a, cost_b, 2);
 		operations = ft_calloc(dif + 1, sizeof(char *));
 		while (dif-- > 0)
-			operations[dif - 1] = ft_strdup("rrr");
+			operations[dif] = ft_strdup("rrr");
 	}
 	else
 		return (NULL);
