@@ -28,13 +28,15 @@ int	costs(t_node *stack_a, t_node *stack_b, t_node *ta_node, t_node *pos_b)
 
 int	calculate_cost_stacks(t_node *stack, t_node *target)
 {
-	int	cost;
+	int		cost;
+	t_node	*tmp;
 
 	cost = 0;
-	while (stack != target)
+	tmp = stack;
+	while (tmp != target)
 	{
 		cost++;
-		stack = stack->next;
+		tmp = tmp->next;
 	}
 	if (cost > count_nodes(stack) / 2)
 		cost = count_nodes(stack) - cost;
