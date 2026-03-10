@@ -47,7 +47,7 @@ void	exec_operations(t_node **stack_a, t_node **stack_b, char **operations)
 	int	i;
 
 	i = 0;
-	while (operations[i] != NULL)
+	while (operations && operations[i] != NULL)
 	{
 		if (ft_strncmp(operations[i], "rra", 3) == 0)
 			rotate_stack(stack_a, NULL, "rra");
