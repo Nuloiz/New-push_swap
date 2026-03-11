@@ -39,7 +39,7 @@ int	cc_2w(t_node *stack, t_node *target)
 
 	cost = cc_1w(stack, target);
 	if (cost > count_nodes(stack) / 2)
-		cost = cost - count_nodes(stack);
+		cost = count_nodes(stack) - cost;
 	return (cost);
 }
 //cost calculation 1 way
