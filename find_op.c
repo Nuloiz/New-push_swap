@@ -101,10 +101,16 @@ t_op	find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 	ops = check_b_rot(a, b, cost_a, cost_b);
 	if (ops.rr > 0 || ops.rrr > 0)
 	{
+		cost_a = cost_a - ops.rr;
+		cost_b = cost_b - ops.rr;
 		if (rr_posibility(a, b, cost_a, cost_b) == 1)
 			ops = add_ops(ops, cost_a, cost_b, 1);
 		else if (rr_posibility(a, b, cost_a, cost_b) == 2)
-			ops = add_ops(ops, cc_2w(a, ta_node), cc_2w(b, pos_b), 0);
+		{
+			cost_a = cc_2w(a, ta_node) - ops.rrr;
+			cost_b = cc_2w(b, pos_b) - ops.rrr;
+			ops = add_ops(ops, cost_a, cost_b, 0);
+		}
 	}
 	else
 		ops = rot_wo_double(a, b, cost_a, cost_b);
