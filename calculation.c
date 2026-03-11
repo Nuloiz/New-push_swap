@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:41:01 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/10 17:32:58 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 11:52:30 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,35 @@ int	costs(t_node *stack_a, t_node *stack_b, t_node *ta_node, t_node *pos_b)
 {
 	int	cost_a;
 	int	cost_b;
+	int	tmp_a;
+	int	tmp_b;
 
-	cost_a = calculate_cost_stacks(stack_a, ta_node);
-	cost_b = calculate_cost_stacks(stack_b, pos_b);
+	cost_a = cc_1w(stack_a, ta_node);
+	cost_b = cc_1w(stack_b, pos_b);
 	if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 1)
 		return (cost_a + cost_b - rr_cost(cost_a, cost_b, 1));
 	else if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 2)
-		return (cost_a + cost_b - rr_cost(cost_a, cost_b, 2));
+	{
+		tmp_a = cc_2w(stack_a, ta_node);
+		tmp_b = cc_2w(stack_b, pos_b);
+		return (tmp_a + tmp_b - rr_cost(tmp_a, tmp_b, 2));
+	}
 	return (cost_a + cost_b);
 }
+//cost calculation 2 way
 
-int	calculate_cost_stacks(t_node *stack, t_node *target)
+int	cc_2w(t_node *stack, t_node *target)
+{
+	int	cost;
+
+	cost = cc_1w(stack, target);
+	if (cost > count_nodes(stack) / 2)
+		cost = cost - count_nodes(stack);
+	return (cost);
+}
+//cost calculation 1 way
+
+int	cc_1w(t_node *stack, t_node *target)
 {
 	int		cost;
 	t_node	*tmp;
