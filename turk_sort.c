@@ -47,7 +47,7 @@ void	exec_operations(t_node **stack_a, t_node **stack_b, t_op operations)
 	while (operations.rr-- > 0)
 		rotate_stack(stack_a, stack_b, "rr");
 	while (operations.rrr-- > 0)
-		rotate_stack(stack_a, stack_b, "rr");
+		rotate_stack(stack_a, stack_b, "rrr");
 	while (operations.ra-- > 0)
 		rotate_stack(stack_a, NULL, "ra");
 	while (operations.rb-- > 0)
