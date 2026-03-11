@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 15:20:08 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 15:34:03 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,12 @@ void	rot_top(t_node **stack_a)
 	}
 }
 
-void	turk_sort(t_node *stack_a)
+void	turk_sort(t_node *stack_a, t_node *b)
 {
-	t_node	*b;
 	t_cost	cost;
 	t_node	*ta_node;
 	t_node	*pos_b;
 
-	b = NULL;
-	set_up_sort(&stack_a, &b);
 	while (b != NULL)
 	{
 		cost.total_cost = 2147483647;
