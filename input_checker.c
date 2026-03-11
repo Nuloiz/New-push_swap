@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:29:34 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/05 11:34:40 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 15:16:32 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ int	input_checker(int argc, char **argv)
 	if (argc == 1)
 	{
 		list = ft_split(argv[0], ' ');
-		if (!list)
+		if (!list || !list[0])
+		{
+			if (list)
+				free_array(list);
 			return (0);
+		}
 		one = 1;
 	}
 	else
