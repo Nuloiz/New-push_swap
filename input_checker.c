@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:29:34 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 15:16:32 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 15:42:59 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ static int	correct_number(char **list)
 	return (1);
 }
 
+int	check_rest(char **list, int one, int index)
+{
+	if (!no_int_twice(list))
+		index = 0;
+	if (one == 1)
+		free_array(list);
+	if (one == 1 && index == 1)
+		return (2);
+	return (index);
+}
+
 int	input_checker(int argc, char **argv)
 {
 	int		index;
@@ -69,11 +80,5 @@ int	input_checker(int argc, char **argv)
 	else
 		list = argv;
 	index = correct_number(list);
-	if (!no_int_twice(list))
-		index = 0;
-	if (one == 1)
-		free_array(list);
-	if (one == 1 && index == 1)
-		return (2);
-	return (index);
+	return (check_rest(list, one, index));
 }
