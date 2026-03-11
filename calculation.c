@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:41:01 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 11:52:30 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 12:35:19 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	costs(t_node *stack_a, t_node *stack_b, t_node *ta_node, t_node *pos_b)
 		tmp_b = cc_2w(stack_b, pos_b);
 		return (tmp_a + tmp_b - rr_cost(tmp_a, tmp_b, 2));
 	}
-	return (cost_a + cost_b);
+	return (cc_2w(stack_a, ta_node) + cc_2w(stack_b, pos_b));
 }
 //cost calculation 2 way
 
