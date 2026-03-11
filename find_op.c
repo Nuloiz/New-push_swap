@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 11:59:16 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 12:47:33 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,24 @@ t_op	check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 	return (operations);
 }
 
-t_op	rot_wo_rr(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
+t_op	rot_wo_double(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
 	t_op	operations;
-	int		tmp;
 
-	tmp = cost_a;
-	while (cost_a-- > 0)
+	if (cost_a > count_nodes(stack_a) / 2)
 	{
-		if (tmp > count_nodes(stack_a) / 2)
-			operations.rra++;
-		else
-			operations.ra++;
+		cost_a = count_nodes(stack_a) - cost_a;
+		operations = add_ops(operations, cost_a, 0, 0);
 	}
-	tmp = cost_b;
-	while (cost_b-- > 0)
+	else
+		operations = add_ops(operations, cost_a, 0, 1);
+	if (cost_b > count_nodes(stack_b) / 2)
 	{
-		if (tmp > count_nodes(stack_b) / 2)
-			operations.rrb++;
-		else
-			operations.rb++;
+		cost_b = count_nodes(stack_b) - cost_b;
+		operations = add_ops(operations, 0, cost_b, 0);
 	}
+	else
+		operations = add_ops(operations, 0, cost_b, 1);
 	return (operations);
 }
 
@@ -110,6 +107,6 @@ t_op	find_op(t_node *a, t_node *b, t_node *pos_b, t_node *ta_node)
 			ops = add_ops(ops, cc_2w(a, ta_node), cc_2w(b, pos_b), 0);
 	}
 	else
-		ops = rot_wo_rr(a, b, cost_a, cost_b);
+		ops = rot_wo_double(a, b, cost_a, cost_b);
 	return (ops);
 }
