@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 12:47:33 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/11 12:48:38 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,25 @@ t_op	check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 	return (operations);
 }
 
+t_op	add_ops(t_op operations, int cost_a, int cost_b, int r)
+{
+	if (r == 1)
+	{
+		while (cost_a-- > 0)
+			operations.ra++;
+		while (cost_b-- > 0)
+			operations.rb++;
+	}
+	else
+	{
+		while (cost_a-- > 0)
+			operations.rra++;
+		while (cost_b-- > 0)
+			operations.rrb++;
+	}
+	return (operations);
+}
+
 t_op	rot_wo_double(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
 	t_op	operations;
@@ -68,25 +87,6 @@ t_op	rot_wo_double(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 	}
 	else
 		operations = add_ops(operations, 0, cost_b, 1);
-	return (operations);
-}
-
-t_op	add_ops(t_op operations, int cost_a, int cost_b, int r)
-{
-	if (r == 1)
-	{
-		while (cost_a-- > 0)
-			operations.ra++;
-		while (cost_b-- > 0)
-			operations.rb++;
-	}
-	else
-	{
-		while (cost_a-- > 0)
-			operations.rra++;
-		while (cost_b-- > 0)
-			operations.rrb++;
-	}
 	return (operations);
 }
 
