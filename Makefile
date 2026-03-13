@@ -2,7 +2,13 @@ NAME	=	push_swap
 
 SRC		=	push_swap.c linked_list.c op_switch_elements_in_stack.c op_rotate_stack.c op_swap_stacks.c radix_sort.c edge_and_sorted.c new_numbers.c free.c input_checker.c lst_functions.c turk_sort.c find_op.c calculation.c target_node.c
 
+NAME_BONUS	=	checker
+
+SRC_BONUS = 
+
 OBJS	=	${SRC:.c=.o}
+
+OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 CC		=	gcc
 
@@ -85,3 +91,9 @@ small_check: $(NAME)
 	@./$(NAME) $(INPUT3) | ./checker_linux $(INPUT3)
 
 re: fclean all
+
+bonus : ${NAME_BONUS}
+${NAME_BONUS}: ${OBJS_BONUS}
+	make all -C tools/libft
+	cp tools/libft/libft.a .
+	${CC} ${CFLAGS} ${OBJS_BONUS} -o ${NAME_BONUS} libft.a
