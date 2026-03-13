@@ -4,7 +4,7 @@ SRC		=	push_swap.c linked_list.c op_switch_elements_in_stack.c op_rotate_stack.c
 
 NAME_BONUS	=	checker
 
-SRC_BONUS = 
+SRC_BONUS = bonus_checker.c input_checker.c
 
 OBJS	=	${SRC:.c=.o}
 
