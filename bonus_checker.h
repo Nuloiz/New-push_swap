@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:09:54 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 15:51:17 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 16:32:57 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_op
 	int	rrr;
 }				t_op;
 
+int		check_stacks(t_node *stack_a, t_node *stack_b);
 int		input_checker(int argc, char **argv);
 int		no_int_twice(char **list);
 int		*new_numbers(int num, char **list, int index);

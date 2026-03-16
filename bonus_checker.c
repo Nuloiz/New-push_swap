@@ -6,39 +6,18 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 16:07:03 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 16:35:04 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus_checker.h"
 
-int	check_stacks(t_node *stack_a, t_node *stack_b)
+int	create_stack_helper(int argc, char **list, int index, t_node **stack_a)
 {
-	if (stack_b != NULL)
-		return (0);
-	while (stack_a != NULL)
-	{
-		if (stack_a->next != NULL && stack_a->value > stack_a->next->value)
-			return (0);
-		stack_a = stack_a->next;
-	}
-	return (1);
-}
-
-int	create_stack(int argc, char **argv, int index, t_node **stack_a)
-{
-	char	**list;
-	int		*new_list;
 	int		num;
+	int		*new_list;
 
-	if (index == 2)
-	{
-		list = ft_split(argv[0], ' ');
-		if (!list)
-			return (0);
-	}
-	else
-		list = argv;
+	num = 0;
 	while (list[num])
 		num++;
 	new_list = new_numbers(num, list, index);
@@ -53,6 +32,21 @@ int	create_stack(int argc, char **argv, int index, t_node **stack_a)
 	if (!(*stack_a))
 		return (0);
 	return (1);
+}
+
+int	create_stack(int argc, char **argv, int index, t_node **stack_a)
+{
+	char	**list;
+
+	if (index == 2)
+	{
+		list = ft_split(argv[0], ' ');
+		if (!list)
+			return (0);
+	}
+	else
+		list = argv;
+	return (create_stack_helper(argc, list, index, stack_a));
 }
 
 int	exec_check_op(char *list, t_node **stack_a, t_node **stack_b)

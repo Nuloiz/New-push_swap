@@ -6,11 +6,24 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 12:47:38 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 16:22:45 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 16:32:41 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus_checker.h"
+
+int	check_stacks(t_node *stack_a, t_node *stack_b)
+{
+	if (stack_b != NULL)
+		return (0);
+	while (stack_a != NULL)
+	{
+		if (stack_a->next != NULL && stack_a->value > stack_a->next->value)
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
 
 int	no_int_twice(char **list)
 {
@@ -33,7 +46,6 @@ int	no_int_twice(char **list)
 	}
 	return (1);
 }
-
 
 char	**get_lines(void)
 {
