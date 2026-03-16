@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:09:54 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/13 16:15:17 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 14:46:07 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "./tools/libft/libft.h"
+# include "./tools/libft/get_next_line_bonus.h"
 
 typedef struct s_node
 {
