@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:09:54 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 14:50:40 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 15:16:10 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,16 @@ typedef struct s_op
 }				t_op;
 
 int		input_checker(int argc, char **argv);
+int		no_int_twice(char **list);
+t_node	**linked_list_start(int argc, int *list, t_node **stack_a);
+t_node	*sa(t_node *stack_a);
+t_node	*sb(t_node *stack_b);
+void	ss(t_node *stack_a, t_node *stack_b);
+void	rotate_stack(t_node **stack_a, t_node **stack_b, char *operation);
+void	pa(t_node **stack_a, t_node **stack_b);
+void	pb(t_node **stack_a, t_node **stack_b);
+char	**get_lines(void);
+void	free_stack(t_node **stack);
+void	free_array(char	**array);
 
 #endif
