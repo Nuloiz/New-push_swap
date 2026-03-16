@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 15:43:01 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 16:07:03 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int	main(int argc, char **argv)
 	int		index;
 	t_node	*stack_a;
 	t_node	*stack_b;
-	char	**list;
 
 	argc = argc -1;
 	argv = argv + 1;
@@ -128,7 +127,6 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
-	free_array(list);
 	free_stack(&stack_a);
 	return (0);
 }
