@@ -4,8 +4,8 @@ This project has been created as part of the 42 curriculum by nschutz
 **Push_swap** is an algorithmic challenge that requires sorting a stack of integers using only two stacks (A and B) and a limited set of operations: `sa`, `sb`, `ss`, `pa`, `pb`, `ra`, `rra`, `rb`, `rrb`, `rr`, `rrr`. The goal is to minimize the number of operations while handling up to 500 unique integers within strict performance constraints.
 
 This implementation features a highly optimized **Turk Sort algorithm** that achieves exceptional performance:
-- **Reverse sorted 500 numbers**: 1493 moves (top 1% performance)  
-- **Random 500 numbers**: ~5400 moves average (top 10%)
+- **Reverse sorted 500 numbers**: up to 600 moves 
+- **Random 500 numbers**: up to 5400 moves
 - Full support for all 11 push_swap operations including optimized `rr`/`rrr` detection
 
 Key optimizations include precise target node finding, cost-based position selection, rotation optimization (using list size/2), and intelligent combined rotation handling (`rr_posibility`).
