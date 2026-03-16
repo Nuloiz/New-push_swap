@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 12:27:35 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 12:45:31 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,28 @@ int	check_stacks(t_node *stack_a, t_node *stack_b)
 	return (1);
 }
 
+int	create_stack(int argc, char **argv, int index, t_node **stack_a)
+{
+	char	**list;
+	int		num;
+
+	if (index == 2)
+	{
+		list = ft_split(argv[0], ' ');
+		if (!list)
+			return (0);
+	}
+	else
+		list = argv;
+	while (list[num])
+		num++;
+	linked_list_start(num, list, stack_a);
+	free(list);
+	if (!(*stack_a))
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		index;
@@ -33,9 +55,12 @@ int	main(int argc, char **argv)
 
 	argc = argc -1;
 	argv = argv + 1;
+	stack_a = NULL;
+	stack_b = NULL;
 	index = input_checker(argc, argv);
 	if (argc == 0 || index == 0)
 		return (ft_putendl_fd("Error", 2), 0);
+	index = create_stack(argc, argv, index, &stack_a);
     //Get Operations
     //Save operations in a list
     //Execute operations on stacks
