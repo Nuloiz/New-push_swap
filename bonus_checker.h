@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:09:54 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 14:46:07 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 14:50:40 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ typedef struct s_node
 	int				value;
 	struct s_node	*next;
 }				t_node;
+
+typedef struct s_op
+{
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}				t_op;
 
 int		input_checker(int argc, char **argv);
 
