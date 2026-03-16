@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 15:03:07 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 15:10:23 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,15 @@ int	exec_check_op(char *list, t_node **stack_a, t_node **stack_b)
 	return (1);
 }
 
-int	exec_check(char **list, t_node **stack_a, t_node **stack_b)
+int	exec_check(t_node **stack_a, t_node **stack_b)
 {
-	int	i;
+	int		i;
+	char	**list;
 
 	i = 0;
+	list = get_lines();
+	if (!list)
+		return (0);
 	while (list[i])
 	{
 		if (!exec_check_op(list[i], stack_a, stack_b))
@@ -110,10 +114,7 @@ int	main(int argc, char **argv)
 		return (ft_putendl_fd("Error", 2), 0);
 	if (!create_stack(argc, argv, index, &stack_a))
 		return (ft_putendl_fd("Error", 2), 0);
-	list = get_lines();
-	if (!list)
-		return (ft_putendl_fd("Error", 2), 0);
-	if (!exec_check(list, &stack_a, &stack_b))
+	if (!exec_check(&stack_a, &stack_b))
 		return (ft_putendl_fd("Error", 2), 0);
 	if (check_stacks(stack_a, stack_b))
 		ft_putendl_fd("OK", 1);
