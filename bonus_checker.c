@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 15:10:23 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 15:43:01 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	check_stacks(t_node *stack_a, t_node *stack_b)
 int	create_stack(int argc, char **argv, int index, t_node **stack_a)
 {
 	char	**list;
+	int		*new_list;
 	int		num;
 
 	if (index == 2)
@@ -40,8 +41,15 @@ int	create_stack(int argc, char **argv, int index, t_node **stack_a)
 		list = argv;
 	while (list[num])
 		num++;
-	linked_list_start(num, list, stack_a);
-	free(list);
+	new_list = new_numbers(num, list, index);
+	if (!new_list)
+		return (0);
+	linked_list_start(num, new_list, stack_a);
+	free(new_list);
+	if (index == 2)
+		free_array(list);
+	else
+		free_array_list(argc, list);
 	if (!(*stack_a))
 		return (0);
 	return (1);
