@@ -4,7 +4,7 @@ SRC		=	push_swap.c linked_list.c op_switch_elements_in_stack.c op_rotate_stack.c
 
 NAME_BONUS	=	checker
 
-SRC_BONUS = bonus_checker.c bonus_get_lines.c input_checker.c linked_list.c lst_functions.c free.c get_next_line_bonus.c get_next_line_utils_bonus.c
+SRC_BONUS = bonus_checker.c bonus_get_lines.c input_checker.c linked_list.c lst_functions.c free.c tools/get_next_line/get_next_line_bonus.c tools/get_next_line/get_next_line_utils_bonus.c
 
 OBJS	=	${SRC:.c=.o}
 
@@ -32,11 +32,11 @@ ${NAME}: ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o ${NAME} libft.a
 
 clean:
-	${RM}	${OBJS}
+	${RM}	${OBJS} ${OBJS_BONUS}
 	make clean -C tools/libft
 
 fclean: clean
-	${RM}	${NAME} libft.a
+	${RM}	${NAME}	${NAME_BONUS} libft.a tools/get_next_line/get_next_line_bonus.o tools/get_next_line/get_next_line_utils_bonus.o
 	make fclean -C tools/libft
 
 check: $(NAME)
