@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 12:45:31 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/16 12:49:25 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 	int		index;
 	t_node	*stack_a;
 	t_node	*stack_b;
+	char	**list;
 
 	argc = argc -1;
 	argv = argv + 1;
@@ -61,12 +62,16 @@ int	main(int argc, char **argv)
 	if (argc == 0 || index == 0)
 		return (ft_putendl_fd("Error", 2), 0);
 	index = create_stack(argc, argv, index, &stack_a);
-    //Get Operations
+	list = get_lines();
+	if (!list)
+		return (free_stack(&stack_a), 0);
     //Save operations in a list
     //Execute operations on stacks
 	if (check_stacks(stack_a, stack_b))
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
+	free(list);
+	free_stack(&stack_a);
 	return (0);
 }
