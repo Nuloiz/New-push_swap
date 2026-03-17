@@ -90,27 +90,35 @@ small_check: $(NAME)
 	@./$(NAME) $(INPUT7) | ./checker_linux $(INPUT7)
 	@./$(NAME) $(INPUT3) | ./checker_linux $(INPUT3)
 
-bonus_check: $(NAME) $(NAME_BONUS)
+bc1: $(NAME) $(NAME_BONUS)
 	@printf " running checker with 3 numbers... \t"
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_BONUS) $(INPUT1) < operations.txt
+	./$(NAME) $(INPUT1) | ./checker_linux $(INPUT1)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT1) | ./$(NAME_BONUS) $(INPUT1)
 	@printf " check correctness... \t"
-	@./$(NAME_BONUS) $(INPUT1) < operations.txt
+
+bc2: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 5 numbers... \t"
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_BONUS) $(INPUT2) < operations.txt
+	./$(NAME) $(INPUT2) | ./checker_linux $(INPUT2)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT2) | ./$(NAME_BONUS) $(INPUT2)
 	@printf " check correctness... \t"
-	@./$(NAME_BONUS) $(INPUT2) < operations.txt
+
+bc3: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 10 numbers... \t"
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_BONUS) $(INPUT3) < operations.txt
+	./$(NAME) $(INPUT3) | ./checker_linux $(INPUT3)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT3) | ./$(NAME_BONUS) $(INPUT3)
 	@printf " check correctness... \t"
-	@./$(NAME_BONUS) $(INPUT3) < operations.txt
+
+bc4: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 100 numbers... \t"
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_BONUS) $(INPUT4) < operations.txt
+	./$(NAME) $(INPUT4) | ./checker_linux $(INPUT4)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT4) | ./$(NAME_BONUS) $(INPUT4)
 	@printf " check correctness... \t"
-	@./$(NAME_BONUS) $(INPUT4) < operations.txt
+
+bc5: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 500 numbers... \t"
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_BONUS) $(INPUT5) < operations.txt
+	./$(NAME) $(INPUT5) | ./checker_linux $(INPUT5)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT5) | ./$(NAME_BONUS) $(INPUT5)
 	@printf " check correctness... \t"
-	@./$(NAME_BONUS) $(INPUT5) < operations.txt
 
 re: fclean all
 
