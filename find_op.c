@@ -6,14 +6,16 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:44:16 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 12:48:38 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:40:16 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_op	set_up_op(t_op operations)
+t_op	set_up_op(void)
 {
+	t_op	operations;
+
 	operations.ra = 0;
 	operations.rb = 0;
 	operations.rr = 0;
@@ -30,7 +32,7 @@ t_op	check_b_rot(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 	int		tmp_a;
 	int		tmp_b;
 
-	operations = set_up_op(operations);
+	operations = set_up_op();
 	if (cost_a == 0 || cost_b == 0)
 		return (operations);
 	if (rr_posibility(stack_a, stack_b, cost_a, cost_b) == 1)
@@ -73,6 +75,7 @@ t_op	rot_wo_double(t_node *stack_a, t_node *stack_b, int cost_a, int cost_b)
 {
 	t_op	operations;
 
+	operations = set_up_op();
 	if (cost_a > count_nodes(stack_a) / 2)
 	{
 		cost_a = count_nodes(stack_a) - cost_a;
