@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 12:47:38 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/17 11:13:27 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:56:55 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**get_lines(void)
 	char	*line;
 	int		i;
 
-	lines = malloc(sizeof(char *) * 1000);
+	lines = malloc(sizeof(char *) * 6000);
 	if (!lines)
 		return (NULL);
 	i = 0;
