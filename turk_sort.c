@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 12:08:58 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/11 15:34:03 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:42:31 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,5 @@ void	turk_sort(t_node *stack_a, t_node *b)
 		exec_operations(&stack_a, &b, find_op(stack_a, b, cost.pos, ta_node));
 	}
 	rot_top(&stack_a);
+	free_stack(&stack_a);
 }
