@@ -92,28 +92,28 @@ small_check: $(NAME)
 
 bc1: $(NAME) $(NAME_BONUS)
 	@printf " running checker with 3 numbers... \t"
-	./$(NAME) $(INPUT1) | ./checker_linux $(INPUT1)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT1) | ./$(NAME_BONUS) $(INPUT1)
+	./$(NAME) $(INPUT1) | ./checker_linux $(INPUT1)
 
 bc2: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 5 numbers... \t"
-	./$(NAME) $(INPUT2) | ./checker_linux $(INPUT2)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT2) | ./$(NAME_BONUS) $(INPUT2)
+	./$(NAME) $(INPUT2) | ./checker_linux $(INPUT2)
 
 bc3: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 10 numbers... \t"
-	./$(NAME) $(INPUT3) | ./checker_linux $(INPUT3)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT3) | ./$(NAME_BONUS) $(INPUT3)
+	./$(NAME) $(INPUT3) | ./checker_linux $(INPUT3)
 
 bc4: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 100 numbers... \t"
-	./$(NAME) $(INPUT4) | ./checker_linux $(INPUT4)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT4) | ./$(NAME_BONUS) $(INPUT4)
+	./$(NAME) $(INPUT4) | ./checker_linux $(INPUT4)
 
 bc5: $(NAME) $(NAME_BONUS)
 	@printf "\n running checker with 500 numbers... \t"
-	./$(NAME) $(INPUT5) | ./checker_linux $(INPUT5)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT5) | ./$(NAME_BONUS) $(INPUT5)
+	./$(NAME) $(INPUT5) | ./checker_linux $(INPUT5)
 
 re: fclean all
 
