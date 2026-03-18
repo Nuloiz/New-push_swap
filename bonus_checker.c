@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/18 12:00:49 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/18 12:29:21 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,27 @@ int	create_stack(int argc, char **argv, int index, t_node **stack_a)
 
 int	exec_check_op(char *list, t_node **stack_a, t_node **stack_b)
 {
-	if (ft_strncmp(list, "sa", 2) == 0)
+	if (ft_strncmp(list, "sa\n", 3) == 0)
 		sa(*stack_a);
-	else if (ft_strncmp(list, "sb", 2) == 0)
+	else if (ft_strncmp(list, "sb\n", 3) == 0)
 		sb(*stack_b);
-	else if (ft_strncmp(list, "ss", 2) == 0)
+	else if (ft_strncmp(list, "ss\n", 3) == 0)
 		ss(*stack_a, *stack_b);
-	else if (ft_strncmp(list, "rra", 3) == 0)
+	else if (ft_strncmp(list, "rra\n", 4) == 0)
 		rotate_stack(stack_a, stack_b, "rra");
-	else if (ft_strncmp(list, "rrb", 3) == 0)
+	else if (ft_strncmp(list, "rrb\n", 4) == 0)
 		rotate_stack(stack_a, stack_b, "rrb");
-	else if (ft_strncmp(list, "rrr", 3) == 0)
+	else if (ft_strncmp(list, "rrr\n", 4) == 0)
 		rotate_stack(stack_a, stack_b, "rrr");
-	else if (ft_strncmp(list, "ra", 2) == 0)
+	else if (ft_strncmp(list, "ra\n", 3) == 0)
 		rotate_stack(stack_a, stack_b, "ra");
-	else if (ft_strncmp(list, "rb", 2) == 0)
+	else if (ft_strncmp(list, "rb\n", 3) == 0)
 		rotate_stack(stack_a, stack_b, "rb");
-	else if (ft_strncmp(list, "rr", 2) == 0)
+	else if (ft_strncmp(list, "rr\n", 3) == 0)
 		rotate_stack(stack_a, stack_b, "rr");
-	else if (ft_strncmp(list, "pa", 2) == 0)
+	else if (ft_strncmp(list, "pa\n", 3) == 0)
 		pa(stack_a, stack_b);
-	else if (ft_strncmp(list, "pb", 2) == 0)
+	else if (ft_strncmp(list, "pb\n", 3) == 0)
 		pb(stack_a, stack_b);
 	else
 		return (0);
