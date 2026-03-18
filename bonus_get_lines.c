@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 12:47:38 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/17 11:56:55 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/18 12:00:59 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,4 @@ int	no_int_twice(char **list)
 		i++;
 	}
 	return (1);
-}
-
-char	**get_lines(void)
-{
-	char	**lines;
-	char	*line;
-	int		i;
-
-	lines = malloc(sizeof(char *) * 6000);
-	if (!lines)
-		return (NULL);
-	i = 0;
-	while (1)
-	{
-		line = get_next_line(0);
-		if (!line)
-			break ;
-		lines[i] = line;
-		i++;
-	}
-	lines[i] = NULL;
-	return (lines);
 }

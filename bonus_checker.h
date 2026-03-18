@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:09:54 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 16:32:57 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/18 12:01:05 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ss(t_node *stack_a, t_node *stack_b);
 void	rotate_stack(t_node **stack_a, t_node **stack_b, char *operation);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
-char	**get_lines(void);
 void	free_stack(t_node **stack);
 void	free_array(char	**array);
 void	free_array_list(int argc, char	**array);

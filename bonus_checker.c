@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:08:46 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/17 11:13:23 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/18 12:00:49 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,20 @@ int	exec_check_op(char *list, t_node **stack_a, t_node **stack_b)
 
 int	exec_check(t_node **stack_a, t_node **stack_b)
 {
-	int		i;
-	char	**list;
+	char	*line;
 
-	i = 0;
-	list = get_lines();
-	if (!list)
-		return (0);
-	while (list[i])
+	while (1)
 	{
-		if (!exec_check_op(list[i], stack_a, stack_b))
+		line = get_next_line(0);
+		if (!line)
+			break ;
+		if (!exec_check_op(line, stack_a, stack_b))
 		{
-			free_array(list);
+			free(line);
 			return (0);
 		}
-		i++;
+		free(line);
 	}
-	free_array(list);
 	return (1);
 }
 
