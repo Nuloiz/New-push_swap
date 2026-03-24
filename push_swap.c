@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:34:38 by nschutz           #+#    #+#             */
-/*   Updated: 2026/03/16 16:22:36 by nschutz          ###   ########.fr       */
+/*   Updated: 2026/03/24 12:45:51 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ static void	sorting(int num_of_arg, t_node *stack)
 	t_node	*b;
 
 	if (already_sorted(stack))
+	{
+		free_stack(&stack);
 		return ;
+	}
 	if (num_of_arg <= 3)
 	{
 		temp = three_arg(stack);
