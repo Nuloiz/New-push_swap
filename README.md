@@ -1,12 +1,27 @@
 This project has been created as part of the 42 curriculum by nschutz
 ## Description
 
-**Push_swap** is an algorithmic challenge that requires sorting a stack of integers using only two stacks (A and B) and a limited set of operations: `sa`, `sb`, `ss`, `pa`, `pb`, `ra`, `rra`, `rb`, `rrb`, `rr`, `rrr`. The goal is to minimize the number of operations while handling up to 500 unique integers within strict performance constraints.
+**Push_swap** is a project which requires to code an algorithm. This algorithm hast to sort a stack of integers using only two stacks and a limited set of operations: 
+`sa` (Switch the first two Elements in Stack A),
+`sb` (Switch the first two Elements in Stack B),
+`ss` (Switch the first two Elements in Stack A & in Stack B),
+`pa` (Push the first Element of Stack B on Stack A),
+`pb` (Push the first Element of Stack A on Stack B),
+`ra` (Rotate Elements in Stack A),
+`rra`(Reverse rotate Elements in Stack A),
+`rb` (Rotate Elements in Stack B),
+`rrb` (REverse rotate Elements in Stack B),
+`rr` (Rotate Elements in Stack A & in Stack B),
+`rrr` (Reverse rotate Elements in Stack A & in Stack B).
+The algorithm should sort up to 500 unique integers with a minimized amount of operations, while also be efficient in performance.
 
-This implementation features a highly optimized **Turk Sort algorithm** that achieves exceptional performance:
+This project was already once done by me three years earlier than this Implementaion, using the **Radix Sort algorithm**. The radix implementation worked fine, but wasn't as efficient as the algorithm I am using now.
+
+This implementation features a highly optimized **Turk Sort algorithm** that achieves far better performance:
 - **Reverse sorted 500 numbers**: up to 600 moves 
 - **Random 500 numbers**: up to 5400 moves
-- Full support for all 11 push_swap operations including optimized `rr`/`rrr` detection
+- Full support for all 11 push_swap operations, except `ss`.
+- Including optimized `rr`/`rrr` detection
 
 Key optimizations include precise target node finding, cost-based position selection, rotation optimization (using list size/2), and intelligent combined rotation handling (`rr_posibility`).
 
@@ -18,9 +33,11 @@ make
 # or
 make bonus
 # or
-make check
+make check #Own written full scale check
 # or
-make small_check
+make small_check #Own written small scale check
+# or 
+make bcn #n = number 1 to 5 // Own written bonus check
 ```
 
 ## Ressources
