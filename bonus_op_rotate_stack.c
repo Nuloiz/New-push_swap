@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bonus_op_rotate_stack.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nschutz <nschutz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/06 11:32:37 by nschutz           #+#    #+#             */
+/*   Updated: 2026/03/24 12:57:01 by nschutz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static void	ra_rb(t_node **stack)
+{
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	first = *stack;
+	second = first->next;
+	last = first->next;
+	while (last->next != NULL)
+	{
+		last = last->next;
+	}
+	first->next = NULL;
+	last->next = first;
+	*stack = second;
+}
+
+static void	rra_rrb(t_node **stack)
+{
+	t_node	*new_first;
+	t_node	*new_second;
+	t_node	*new_last;
+
+	new_second = *stack;
+	new_first = ft_lstlast(new_second);
+	new_last = *stack;
+	while (new_last->next->next != NULL)
+		new_last = new_last->next;
+	new_last->next = NULL;
+	ft_lstadd_front(stack, new_first);
+}
+
+static void	rr_to_rrr(t_node **stack_a, t_node **stack_b, char *operation)
+{
+	if (operation[2] == 'a')
+	{
+		rra_rrb(stack_a);
+	}
+	else if (operation[2] == 'b')
+	{
+		rra_rrb(stack_b);
+	}
+	else if (operation[2] == 'r')
+	{
+		rra_rrb(stack_a);
+		rra_rrb(stack_b);
+	}
+	else
+	{
+		ra_rb(stack_a);
+		ra_rb(stack_b);
+	}
+}
+
+void	rotate_stack(t_node **stack_a, t_node	**stack_b, char	*operation)
+{
+	if (operation[1] == 'a')
+	{
+		ra_rb(stack_a);
+	}
+	else if (operation[1] == 'b')
+	{
+		ra_rb(stack_b);
+	}
+	else if (operation[1] == 'r')
+		rr_to_rrr(stack_a, stack_b, operation);
+}
